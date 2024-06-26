@@ -1,28 +1,27 @@
 <?php
-require "database.php";
-require "models/User.php";
+require "../../database.php";
+require "../../models/USer.php";
 
 session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password'])) {
-    $email = $_POST['username'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $response = User::logInUser($email, $password, $connection);
+    $userId = User::createUser($username, $email, $password, $connection);
 
-
-    if ($response) {
-        $_SESSION['id'] = $response['id'];
-        header('Location: home.php');
+    if ($userId) {
+        $_SESSION['id'] = $userId;
+        header('Location: ../../home.php');
         exit();
     } else {
-        echo 'Error logging in!<br>';
+        echo 'Error signing up!<br>';
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset(
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    <title>Prijava</title>
+    <title>Sign-in</title>
     <style>
         html,
         body {
@@ -56,15 +55,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset(
         <div class="form">
             <form method="POST" action="#">
                 <div class="form-group">
-                    <label for="username">Email</label>
+                    <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary" name="submit">Login</button>
-                <p>Don't have an account? <a href="views/user/signin.php">Sign up</a></p>
+                <button type="submit" class="btn btn-primary" name="submit">Sign-in</button>
             </form>
         </div>
     </div>

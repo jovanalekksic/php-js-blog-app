@@ -1,0 +1,46 @@
+
+.card{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.title{
+    text-align: center;
+}
+.container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px; 
+}
+
+.title {
+    margin: 0; 
+}
+.form{
+    margin: 20%;
+}
+
+.post-container {
+
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.comment-container {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.comment {
+    margin-top: 20px;
+    padding-top: 10px;
+}
+.post{
+    margin-top: 10%;
+}
