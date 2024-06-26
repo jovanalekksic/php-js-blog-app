@@ -72,28 +72,28 @@ This is a simple blog application built with PHP 8.1, jQuery 3, MySQL, and style
 
 ### Home Page
 
-![Home Page](screenshots/Home.png)
+![Home Page](Blog/screenshots/Home.png)
 
 ### Login Page
 
-![Login Page](screenshots/Login.png)
+![Login Page](Blog/screenshots/Login.png)
 
 ### Create Post
 
-![Create Post](screenshots/NewPost.png)
+![Create Post](Blog/screenshots/NewPost.png)
 
 ### Update Post
 
-![Create Post](screenshots/UpdatePost.png)
+![Create Post](Blog/screenshots/UpdatePost.png)
 
 ### Add a comment
 
-![Home Page](screenshots/AddComment.png)
+![Home Page](Blog/screenshots/AddComment.png)
 
 ### View a post and it's comments
 
-![Login Page](screenshots/readPost.png)
+![Login Page](Blog/screenshots/readPost.png)
 
 ### Update a comment
 
-![Create Post](screenshots/UpdateComment.png)
+![Create Post](Blog/screenshots/UpdateComment.png)
