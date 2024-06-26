@@ -17,10 +17,11 @@ class User
     public static function createUser($username, $email, $password)
     {
         global $connection;
-        $statement = $connection->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-        $statement->bind_param("sss", $username, $email, $password);
-        if ($statement->execute()) {
-            return $connection->insert_id;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $connection->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $hashedPassword);
+        if ($stmt->execute()) {
+            return $connection->insert_id; // Return the ID of the newly created user
         } else {
             return false;
         }
@@ -66,9 +67,7 @@ class User
         $result = $statement->get_result()->fetch_assoc();
 
         if ($result) {
-            echo "User found: " . $result['email'] . "<br>";
-            if ($password === $result['password']) {
-                echo "Password verified<br>";
+            if (password_verify($password, $result['password'])) {
                 return $result;
             } else {
                 echo "Password verification failed<br>";

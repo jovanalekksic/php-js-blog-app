@@ -75,7 +75,7 @@ if ($result->num_rows == 0) {
                 <div class="modal-body">
                     <div class="container ">
                         <form action="#" method="POST" id="addPostModal">
-                            <h3 style="color: black; text-align: center">Dodaj novu knjigu</h3>
+                            <h3 style="color: black; text-align: center">Add a new post</h3>
                             <div class="row">
                                 <div class="col-md-11 ">
                                     <div class="form-group">
